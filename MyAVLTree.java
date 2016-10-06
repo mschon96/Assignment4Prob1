@@ -118,25 +118,26 @@ public class MyAVLTree{
 Parameters :    root
 Return value(s) : NA
 Partners : CSLC
-Description : This function prints out the level order traversal of this binary search tree; starting at root, then depth 1, and then 2, and so on.
+Description : This function prints out the level order traversal of this AVL tree; starting at root, then depth 1, and then 2, and so on. These heights are separated by lines.
 */
 
-    public void levelOrder(){
-        // q= tree.insert(root);
-        MyQueue q = new MyQueue();
-        q.enque(root);
-
+    public void levelOrder(){                                                      // q= tree.insert(root);
+        MyQueue q = new MyQueue();                                                   q.enque(root);
+                                                                                     int levelNode = 0;
         while(q.isEmpty() ==false)
-        {
-            AVLNode our_node = q.deque();
-            System.out.printf("%d ", our_node.key);
-            if( our_node.left != null)
-                q.enque(our_node.left);
-            if(our_node.right!= null)
-                q.enque(our_node.right);
+        {                                                                                levelNode = q.getSize();
 
-        }
-    }
+//            System.out.printf("%d", q.getSize());
+            while( levelNode >0){
+
+                AVLNode our_node = q.deque();
+
+                System.out.printf("%d ", our_node.key);                      
+                                                                                             if( our_node.left != null)                                                       q.enque(our_node.left);
+                if(our_node.right!= null)                                                        q.enque(our_node.right);                                 
+                levelNode--;                                                             }                                                                
+            System.out.println("");                                                                                                                       
+        }                                                                        } 
 
     /*
        Function Name : sRLL ( Single Rotate Left child's left subtree)
