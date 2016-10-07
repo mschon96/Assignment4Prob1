@@ -107,7 +107,7 @@ public class MyAVLTree{
     private AVLNode printTree(AVLNode t){
         if (t!= null){
             printTree (t.left);
-            System.out.printf("%d ",t.key);
+            System.out.printf("%c ",t.key);
             printTree(t.right);
         }
         return t;
