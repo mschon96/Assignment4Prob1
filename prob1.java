@@ -30,32 +30,35 @@ public class prob1{
             System.out.println("2. Print tree");
             System.out.println("3. Print the level order traversal of the tree");
             System.out.println("4. Exit program:");
-
+//            System.out.println("5. Print size of tree");
+          
             choice = input.nextInt();
-
-            switch(choice){
+          
+            switch(choice){  
                 case 1:
                     System.out.printf("Insert Node:");
                     int insNode = input.nextInt();
                     tree.insert(insNode);
                     //System.out.println("Insert");
-
+    
                     break;
-                case 2:
+                case 2: 
                     tree.printTree();
                     System.out.println("");
                     break;
                 case 3:
-                    // System.out.println("Print level order");
+                      // System.out.println("Print level order");
                     tree.levelOrder();
                     System.out.println(" ");
                     break;
                 case 4:
                     System.out.println("Exit");
                     break;
+                //case 5:
+                  //  System.out.printf("%d\n", tree.size());
             }
         }
 
     }
-
 }
+
