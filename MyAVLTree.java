@@ -1,5 +1,4 @@
-/*
-Name : Mariah Schon
+/*Name: Mariah Schon
 Class : 3320-001
 Program # : Assignment 4
 Due Date : Oct 6
@@ -39,15 +38,15 @@ public class MyAVLTree{
     public int findMax(){
         return findMax(root).key;
     }
- private AVLNode findMax(AVLNode t){
+
+    private AVLNode findMax(AVLNode t){
         if (t == null)
             return null;
         if (t.right == null)
             return t;
         return findMax(t.right);
     }
-
-    public boolean find(int x ){
+public boolean find(int x ){
         return find (root,x);
     }
     private boolean find(AVLNode t, int x){
@@ -76,7 +75,8 @@ public class MyAVLTree{
 
         return balance(t);
     }
- public void remove (int x){
+
+    public void remove (int x){
         root = remove (root, x);
     }
 
@@ -98,7 +98,7 @@ public class MyAVLTree{
             t = t.right;
 
         return balance(t);
-    }
+        }
 
     public void printTree(){
         printTree(root);
@@ -107,38 +107,61 @@ public class MyAVLTree{
     private AVLNode printTree(AVLNode t){
         if (t!= null){
             printTree (t.left);
-            System.out.printf("%c ",t.key);
+            System.out.printf("%d ",t.key);
             printTree(t.right);
         }
         return t;
     }
 
-/*
+    /*
        Function Name : levelOrder()
 Parameters :    root
 Return value(s) : NA
 Partners : CSLC
-Description : This function prints out the level order traversal of this AVL tree; starting at root, then depth 1, and then 2, and so on. These heights are separated by lines.
+Description : This function prints out the level order traversal of this AVL  tree; separated by lines, starting at root, then depth 1, and then 2, and so on.
 */
 
-    public void levelOrder(){                                                      // q= tree.insert(root);
-        MyQueue q = new MyQueue();                                                   q.enque(root);
-                                                                                     int levelNode = 0;
+    public void levelOrder(){
+      // q= tree.insert(root);
+        MyQueue q = new MyQueue();
+        q.enque(root);
+
+        int levelNode = 0;
         while(q.isEmpty() ==false)
-        {                                                                                levelNode = q.getSize();
+        {
+            levelNode = q.getSize();
 
 //            System.out.printf("%d", q.getSize());
             while( levelNode >0){
 
                 AVLNode our_node = q.deque();
 
-                System.out.printf("%d ", our_node.key);                      
-                                                                                             if( our_node.left != null)                                                       q.enque(our_node.left);
-                if(our_node.right!= null)                                                        q.enque(our_node.right);                                 
-                levelNode--;                                                             }                                                                
-            System.out.println("");                                                                                                                       
-        }                                                                        } 
+                System.out.printf("%d ", our_node.key);
 
+
+                if( our_node.left != null)
+                    q.enque(our_node.left);
+                if(our_node.right!= null)
+                    q.enque(our_node.right);
+
+                levelNode--;
+            }
+
+            System.out.println("");
+            }
+    }
+/*
+    public void levelOrder(){
+        MyQueue q = new MyQueue();
+       // AVLNode our_node = getNode();
+
+        for(int i = 0; i < size(); i++){
+            AVLNode our_node = tree.getNode(i);
+            q.inject(our_node.key);
+        }
+            
+    }
+*/
     /*
        Function Name : sRLL ( Single Rotate Left child's left subtree)
 Parameters :    AVLNode k2
@@ -155,7 +178,7 @@ Description : Rotates the tree to make sure it is balanced, depending on current
 
         return k1;
     }
-/*
+    /*
        Function Name : sRRR ( Single Rotate right child's right subtree)
 Parameters :    AVLNode k2
 Return value(s) : k2
@@ -171,8 +194,7 @@ Description : Rotates the tree to make sure it is balanced, depending on current
 
         return k2;
     }
-
-    /*
+/*
        Function Name : dRLR ( Double Rotate left child's right subtree)
 Parameters :    AVLNode k3
 Return value(s) : Single Rotate of LL (passing k3)
@@ -203,6 +225,7 @@ Description : Rotates the tree to make sure it is balanced, depending on current
         //Empty
         if ( t == null)
             return t;
+
         //Positive
         if (height(t.left) - height(t.right) > ALLOWED_INBALANCE){
             if(height(t.left.left) >= height(t.left.right))
@@ -221,7 +244,7 @@ Description : Rotates the tree to make sure it is balanced, depending on current
 
         t.height = Math.max( height( t.left ), height( t.right ) ) + 1;
         return t;
-    }
+         }
 
 
     private int height(AVLNode t){
@@ -232,6 +255,15 @@ Description : Rotates the tree to make sure it is balanced, depending on current
             return t.height;
     }
 
+    public int size() {
+        return(size(root));
+    }
+
+    private int size(AVLNode node) {
+        if (node == null) return(0);
+        else {
+            return(size(node.left) + 1 + size(node.right));
+        }
+    }
 
 }
-
