@@ -15,7 +15,7 @@ Partners: CSLC
 
 public class MyQueue{
 
-    private MyLinkedList queue;
+private MyLinkedList queue;
     int count;
 
     public MyQueue(){
@@ -40,5 +40,11 @@ public class MyQueue{
         else
             return false;
     }
+
+    public int getSize(){
+        int qSize= queue.size();
+        return qSize;
+    }
+
 }
 ~      
